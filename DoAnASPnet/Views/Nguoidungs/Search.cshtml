@@ -1,0 +1,80 @@
+﻿@model IEnumerable<DoAnASPnet.Models.Nguoidung>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+<form asp-controller="Accounts" asp-action="Search" method="get">
+    Mã người dùng: <input type="text" name="manguoidung" /><br />
+    Họ tên: <input type="text" name="hoten" /><br />
+    Email: <input type="text" name="email" /><br />
+    Mật khẩu: <input type="text" name="matkhau" /><br />
+    Điện thoại: <input type="text" name="dienthoai" /><br />
+    Phân quyền: <input type="text" name="phanquyen" /><br />
+    Địa chỉ: <input type="text" name="diachi" /><br />
+    <button type="submit">search</button>
+</form>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNguoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hoten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matkhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dienthoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phanquyen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diachi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNguoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hoten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dienthoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phanquyen.Tenquyen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diachi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
