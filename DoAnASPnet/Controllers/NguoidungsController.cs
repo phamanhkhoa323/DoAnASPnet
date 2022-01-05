@@ -157,26 +157,26 @@ namespace DoAnASPnet.Controllers
             return _context.Nguoidung.Any(e => e.Id == id);
         }
 
-        public IActionResult Search( int? manguoidung, string hoten, string email, string matkhau, string dienthoai, int phanquyen,  string diachi)
+        public iactionresult search(int? manguoidung, string hoten, string email, string matkhau, string dienthoai, int phanquyen, string diachi)
         {
-            List<Nguoidung> acc = _context.Nguoidung.Include(acc=>acc.Phanquyen).ToList();
-            SelectList phan_quyen = new SelectList(_context.Phanquyen, "Id", "Tenquyen");
-            ViewBag.Phanquyen = phan_quyen;
+            list<nguoidung> acc = _context.nguoidung.include(acc => acc.phanquyen).tolist();
+            selectlist phan_quyen = new selectlist(_context.phanquyen, "id", "tenquyen");
+            viewbag.phanquyen = phan_quyen;
             if (manguoidung < 0)
-                acc = acc.Where(acc => acc.MaNguoiDung==manguoidung).ToList();
+                acc = acc.where(acc => acc.manguoidung == manguoidung).tolist();
             if (hoten != null)
-                acc = acc.Where(acc => acc.Hoten.Contains(hoten)).ToList();
+                acc = acc.where(acc => acc.hoten.contains(hoten)).tolist();
             if (email != null)
-                acc = acc.Where(acc => acc.Email.Contains(email)).ToList();
+                acc = acc.where(acc => acc.email.contains(email)).tolist();
             if (matkhau != null)
-                acc = acc.Where(acc => acc.Matkhau.Contains(matkhau)).ToList();
+                acc = acc.where(acc => acc.matkhau.contains(matkhau)).tolist();
             if (dienthoai != null)
-                acc = acc.Where(acc => acc.Dienthoai.Contains(dienthoai)).ToList();
+                acc = acc.where(acc => acc.dienthoai.contains(dienthoai)).tolist();
             if (phanquyen < 0)
-                acc = acc.Where(acc => acc.PhanquyenId==phanquyen).ToList();
+                acc = acc.where(acc => acc.phanquyenid == phanquyen).tolist();
             if (diachi != null)
-                acc = acc.Where(acc => acc.Diachi.Contains(diachi)).ToList();
-            return View(acc);
+                acc = acc.where(acc => acc.diachi.contains(diachi)).tolist();
+            return view(acc);
         }
 
     }
